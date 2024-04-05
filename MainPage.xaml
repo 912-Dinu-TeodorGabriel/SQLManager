@@ -1,0 +1,35 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DBProjectMaui"
+             x:Class="DBProjectMaui.MainPage"
+             x:DataType="local:MainPage">
+
+    <StackLayout>
+        <Label Text="Parent List" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,10,0,5"/>
+        <ListView x:Name="ParentListView" ItemSelected="ParentListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Text="Child List" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,10,0,5"/>
+        <ListView x:Name="ChildForParentListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding}" />
+                            <Button Text="Update" Clicked="UpdateButton_Clicked" CommandParameter="{Binding}" />
+                            <Button Text="Delete" Clicked="DeleteButton_Clicked" CommandParameter="{Binding}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Insert" Clicked="InsertButton_Clicked" />
+
+    </StackLayout>
+
+</ContentPage>
